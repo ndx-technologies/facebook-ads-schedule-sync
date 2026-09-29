@@ -1,0 +1,57 @@
+{
+    "$schema": "./spec.schema.json",
+    "timezone": "America/Sao_Paulo",
+    "ad_account_id": "0000000000000003",
+    "campaigns": [
+        {
+            "id": "000000000000001",
+            "windows": [
+                {
+                    "weekday": "fri",
+                    "from": "05:00",
+                    "until": "23:00"
+                },
+                {
+                    "weekday": "sat",
+                    "from": "05:00",
+                    "until": "23:00"
+                },
+                {
+                    "weekday": "sun",
+                    "from": "05:00",
+                    "until": "23:00"
+                }
+            ]
+        },
+        {
+            "id": "000000000000002",
+            "windows": [
+                {
+                    "weekday": "mon",
+                    "from": "09:00",
+                    "until": "18:00"
+                },
+                {
+                    "weekday": "tue",
+                    "from": "09:00",
+                    "until": "18:00"
+                },
+                {
+                    "weekday": "wed",
+                    "from": "09:00",
+                    "until": "18:00"
+                },
+                {
+                    "weekday": "thu",
+                    "from": "09:00",
+                    "until": "18:00"
+                },
+                {
+                    "weekday": "fri",
+                    "from": "09:00",
+                    "until": "18:00"
+                }
+            ]
+        }
+    ]
+}

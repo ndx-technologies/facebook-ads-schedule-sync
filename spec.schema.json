@@ -1,0 +1,75 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "facebook-ads-schedule-sync spec",
+	"type": "object",
+	"required": [
+		"ad_account_id",
+		"campaigns"
+	],
+	"properties": {
+		"timezone": {
+			"type": "string",
+			"default": "UTC",
+			"description": "IANA time zone used to evaluate all schedules."
+		},
+		"ad_account_id": {
+			"type": "string",
+			"description": "Ad account ID, with or without the `act_` prefix."
+		},
+		"campaigns": {
+			"type": "array",
+			"minItems": 1,
+			"description": "Campaigns to enable and disable.",
+			"items": {
+				"type": "object",
+				"required": [
+					"id",
+					"windows"
+				],
+				"properties": {
+					"id": {
+						"type": "string",
+						"description": "Campaign ID."
+					},
+					"windows": {
+						"type": "array",
+						"minItems": 1,
+						"description": "Weekday windows when the campaign must be `ACTIVE`, one entry per weekday. Outside every window it is `PAUSED`.",
+						"items": {
+							"type": "object",
+							"required": [
+								"weekday",
+								"from",
+								"until"
+							],
+							"properties": {
+								"weekday": {
+									"enum": [
+										"mon",
+										"tue",
+										"wed",
+										"thu",
+										"fri",
+										"sat",
+										"sun"
+									],
+									"description": "Weekday in the spec time zone."
+								},
+								"from": {
+									"type": "string",
+									"pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+									"description": "Start of the window, inclusive, `HH:MM` in 24-hour time."
+								},
+								"until": {
+									"type": "string",
+									"pattern": "^(([01][0-9]|2[0-3]):[0-5][0-9]|24:00)$",
+									"description": "End of the window, exclusive, `HH:MM` in 24-hour time. `24:00` means end of day. Must be after `from`, so a window cannot cross midnight."
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
